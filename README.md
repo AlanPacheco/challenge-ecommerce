@@ -35,11 +35,10 @@ Ecommerce é uma aplicação web voltada para o comércio de venda de produto. O
 
 ## Endpoints
 
-- As collections estão bem definidas em duas pastas
+As collections estão bem definidas em duas pastas
 <br/>
     - CEP: para consumir a api viacep e retornar um endereço.
       - http://localhost:8080/cep/80730360
-<br/>
     - Customer: para CRUD de customers e outros recursos envolvendo seus endereços.
       - Insert address by email -> POST http://localhost:8080/customers/{email}/addresses
       - Find address by email -> GET http://localhost:8080/customers/{email}/addresses
