@@ -4,7 +4,6 @@ import com.challenge.ecommerce.dto.ZipCodeDTO;
 import com.challenge.ecommerce.services.ZipCodeService;
 import com.challenge.ecommerce.services.exceptions.ZipCodeException;
 import com.challenge.ecommerce.utils.Factory;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -15,7 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -47,7 +46,6 @@ public class ZipCodeControllerTests {
     public void findByZipCodeShouldReturnZipCodeDTOWhenZipCodeExists() throws Exception {
         ResultActions resultActions = mockMvc.perform(get("/cep/{id}", existingZipCode)
                 .accept(MediaType.APPLICATION_JSON));
-
         resultActions.andExpect(status().isOk());
         resultActions.andExpect(jsonPath("$.logradouro").exists());
         resultActions.andExpect(jsonPath("$.uf").exists());
