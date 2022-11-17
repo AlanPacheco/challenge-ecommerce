@@ -26,7 +26,7 @@ Ecommerce é uma aplicação web voltada para o comércio de venda de produtos. 
 ## Como executar
 
 - clonar o repositório
-- instalar o mysql e criar o usuário: root e senha: 123
+- instalar o mysql e criar o usuário: root e senha: 12345678
 - criar um banco de dados com nome: ecommerce (não é obrigatório, pois foi configurado no arquivo application-dev.properties para fazer a criação automática da base de dados e das tabelas)
 - ao iniciar a aplicação, o serviço estará rodando através do tomcat na porta 8080
 - importar a collection "Challenge Ecommerce" no postman que esta localizada na pasta postman na raiz do projeto
