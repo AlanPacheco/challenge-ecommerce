@@ -1,42 +1,57 @@
-package com.challenge.ecommerce.entities;
+package com.challenge.ecommerce.dto;
 
-import javax.persistence.*;
-import java.util.Objects;
+import com.challenge.ecommerce.entities.Address;
 
-@Entity
-@Table(name = "tb_address")
-public class Address {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
+
+public class AddressDTO {
+
     private Long id;
-    @Column(nullable = false, length = 100)
+
+    @NotBlank(message = "Campo obrigatório")
     private String publicPlace;
-    @Column(nullable = false, length = 10)
+
+    @NotBlank(message = "Campo obrigatório")
     private String number;
-    @Column(nullable = false, length = 100)
+
+    @NotBlank(message = "Campo obrigatório")
     private String district;
-    @Column(nullable = false, length = 100)
+
+    @NotBlank(message = "Campo obrigatório")
     private String city;
-    @Column(nullable = false, length = 60)
+
+    @NotBlank(message = "Campo obrigatório")
     private String state;
-    @Column(nullable = false, length = 30)
+
+    @NotBlank(message = "Campo obrigatório")
     private String zipCode;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
+    private long customerId;
 
-    public Address(){
+    public AddressDTO() {
     }
 
-    public Address(Long id, String public_place, String number, String district, String city, String state, String zipCode) {
+    public AddressDTO(Long id, String publicPlace, String number, String district, String city, String state, String zipCode, long customerId) {
         this.id = id;
-        this.publicPlace = public_place;
+        this.publicPlace = publicPlace;
         this.number = number;
         this.district = district;
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
+        this.customerId = customerId;
+    }
+
+    public AddressDTO(Address address) {
+        this(address.getId()
+                , address.getPublicPlace()
+                , address.getNumber()
+                , address.getDistrict()
+                , address.getCity()
+                , address.getState()
+                , address.getZipCode()
+                , address.getCustomer().getId());
     }
 
     public Long getId() {
@@ -95,24 +110,11 @@ public class Address {
         this.zipCode = zipCode;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public long getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Address address = (Address) o;
-        return Objects.equals(id, address.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
+    public void setCustomerId(long customerId) {
+        this.customerId = customerId;
     }
 }
