@@ -21,6 +21,7 @@ Ecommerce é uma aplicação web voltada para o comércio de venda de produtos. 
 - Gerenciamento de exceções com ControllerAdvice
 - Validação de campos com Validation
 - Anotação customizada para validação se o email do cliente já existe 
+- Testes do ZipCodeController com MockBean
 
 
 ## Como executar
