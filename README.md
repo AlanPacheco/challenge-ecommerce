@@ -2,7 +2,7 @@
 
 ## Sobre o projeto
 
-Ecommerce é uma aplicação web voltada para o comércio de venda de produto. O projeto possui integração com a api viacep da qual é informado um cep válido e retornado um endereço. Além disso, foi implementado o CRUD de Customers e cadastro/consulta de Endereços.
+Ecommerce é uma aplicação web voltada para o comércio de venda de produtos. O projeto possui integração com a api viacep da qual é informado um cep válido e retornado um endereço. Além disso, foi implementado o CRUD de Customers e cadastro/consulta de Endereços.
 
 
 ## Tecnologias utilizadas
@@ -37,16 +37,29 @@ Ecommerce é uma aplicação web voltada para o comércio de venda de produto. O
 
 As collections estão bem definidas em duas pastas
 <br/>
-    - CEP: para consumir a api viacep e retornar um endereço.
-      - http://localhost:8080/cep/80730360
-    - Customer: para CRUD de customers e outros recursos envolvendo seus endereços.
-      - Insert address by email -> POST http://localhost:8080/customers/{email}/addresses
-      - Find address by email -> GET http://localhost:8080/customers/{email}/addresses
-      - Find all customer paged -> GET http://localhost:8080/customers
-      - Find by id -> GET http://localhost:8080/customers/{id}
-      - Insert -> POST http://localhost:8080/customers
-      - Update -> UPDATE http://localhost:8080/customers/{id}
-      - Delete -> DELETE  http://localhost:8080/customers/{id}
+   - CEP: para consumir a api viacep e retornar um endereço -> GET http://localhost:8080/cep/{codigoCep}
+    
+   - Customer: para CRUD de customers e outros recursos envolvendo seus endereços.
+      - Insert address by email -> 
+            POST http://localhost:8080/customers/{email}/addresses
+      
+      - Find address by email -> 
+            GET http://localhost:8080/customers/{email}/addresses
+      
+      - Find all customer paged -> 
+            GET http://localhost:8080/customers
+      
+      - Find by id -> 
+            GET http://localhost:8080/customers/{id}
+      
+      - Insert -> 
+            POST http://localhost:8080/customers
+      
+      - Update -> 
+            UPDATE http://localhost:8080/customers/{id}
+      
+      - Delete -> 
+            DELETE  http://localhost:8080/customers/{id}
 
 ## Autor
 Alan Pacheco
