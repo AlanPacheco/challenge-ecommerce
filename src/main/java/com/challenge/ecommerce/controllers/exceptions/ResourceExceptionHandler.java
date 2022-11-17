@@ -3,12 +3,14 @@ package com.challenge.ecommerce.controllers.exceptions;
 import com.challenge.ecommerce.services.exceptions.DatabaseException;
 import com.challenge.ecommerce.services.exceptions.ExistingAddressException;
 import com.challenge.ecommerce.services.exceptions.ResourceNotFoundException;
+import com.challenge.ecommerce.services.exceptions.ZipCodeException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.reactive.function.client.WebClientResponseException;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.Instant;
@@ -29,6 +31,17 @@ public class ResourceExceptionHandler {
 	
 	@ExceptionHandler(DatabaseException.class)
 	public ResponseEntity<StandardError> database(DatabaseException e, HttpServletRequest request) {
+		HttpStatus status = HttpStatus.BAD_REQUEST;
+		StandardError err = new StandardError();
+		err.setTimestamp(Instant.now());
+		err.setStatus(status.value());
+		err.setError(e.getMessage());
+		err.setPath(request.getRequestURI());
+		return ResponseEntity.status(status).body(err);
+	}
+
+	@ExceptionHandler(ZipCodeException.class)
+	public ResponseEntity<StandardError> database(ZipCodeException e, HttpServletRequest request) {
 		HttpStatus status = HttpStatus.BAD_REQUEST;
 		StandardError err = new StandardError();
 		err.setTimestamp(Instant.now());
